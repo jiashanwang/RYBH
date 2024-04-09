@@ -83,7 +83,7 @@
 			getGoodsList(){
 				uni.request({
 					url: 'http://aaa.itgy.com.cn/paybackcmj/miniprogram/getBaiHuoList',
-					// url:"http://127.0.0.1:5000/paybackcmj/miniprogram/getBaiHuoList",
+					// url:"http://127.0.0.1:5002/paybackcmj/miniprogram/getBaiHuoList",
 					data: {
 					},
 					method: "POST",

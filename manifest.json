@@ -1,5 +1,5 @@
 {
-    "name" : "国晟商行",
+    "name" : "如风商行",
     "appid" : "__UNI__5419413",
     "description" : "",
     "versionName" : "1.5.0",
@@ -81,9 +81,9 @@
         "template" : "",
         "router" : {
             "mode" : "hash",
-            "base" : "/guosheng/"
+            "base" : "/xunrufeng/"
         },
-        "title" : "国昇商行"
+        "title" : "如风商行"
     },
     "vueVersion" : "2"
 }

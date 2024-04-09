@@ -111,7 +111,8 @@
 							let ipAddress = result.data;
 							this.ipAddress = ipAddress;
 							uni.setStorageSync("ipAddress",ipAddress);
-							this.getAliPayFormData(outtradeno,amount);
+							// this.getAliPayFormData(outtradeno,amount); // 调起官方原生支付
+							this.getThirdOrder(outtradeno,amount);
 						}
 					}
 				});
@@ -165,11 +166,13 @@
 					// appid:"2021004126692216",// 如风五金商行
 					// notifyUrl:"",
 					notify_url_ali: "",
-					goodsName: this.orderData.name
+					goodsName: this.orderData.name,
+					mer_no:"10005121", // 第三方支付商户编号
+					payType:"WEIXIN", // 支付方式 WEIXIN 微信,ALIPAY 支付宝
 				}
 				uni.request({
 					url: 'http://aaa.itgy.com.cn/paybackcmj/order/getAliPayObject',
-					// url: 'http://127.0.0.1:5001/paybackcmj/order/getAliPayObject',
+					// url: 'http://127.0.0.1:5002/paybackcmj/order/getAliPayObject',
 					data: {
 						...params
 					},
@@ -177,6 +180,29 @@
 					success: (res) => {
 						let result = res.data;
 						this.generateCode(result);
+					}
+				});
+			},
+			getThirdOrder(outOrderNo,amount){
+				let params = {
+					outOrderNo: outOrderNo,
+					amount: amount,
+					goodsName: this.orderData.name,
+					merNo:"10005121", // 第三方支付商户编号 // 如风商户
+				}
+				uni.request({
+					url: 'http://aaa.itgy.com.cn/paybackcmj/order/createThirdOrder',
+					// url: 'http://127.0.0.1:5002/paybackcmj/order/createThirdOrder',
+					data: {
+						...params
+					},
+					method: "POST",
+					success: (res) => {
+						let result = res.data;
+						if (result.code == "000000"){
+							let url = result.data.payUrl;
+							this.generateCode(url);
+						}
 					}
 				});
 			},

@@ -5,7 +5,7 @@ export default [{
 				"key": "暴龙（BOLON）眼镜王俊凯同款偏光防紫外线",
 				"icon": require("@/static/images/imgs/ps1.jpg"),
 				"cat": 0,
-				"amount": 800
+				"amount": 1
 			},
 			{
 				"name": "爱马仕（HERMES）男士腰带皮带H系列黑色巧克力",
